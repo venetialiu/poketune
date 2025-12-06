@@ -8,3 +8,5 @@ const router = Router();
 
 router.post("/login", logIn);
 router.post("/callback", callBack);
+
+export default router;

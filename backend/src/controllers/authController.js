@@ -38,4 +38,6 @@ export const callBack = async(req, res) => {
 
     // store the data
 
+    // return redirect call user/genre ?
+
 }

@@ -7,3 +7,6 @@ const router = Router();
 // add middleware later on
 
 router.get("/genre", getGenre);
+
+
+export default router;

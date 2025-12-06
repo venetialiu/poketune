@@ -5,8 +5,9 @@ import dotenv from 'dotenv';
 import mongoose from "mongoose";
 
 // import routes
-// import postRoutes from './routes/posts.js';
-// import userRoutes from './routes/users.js';
+import authRoutes from './src/routes/authRoutes.js';
+import userRoutes from './src/routes/userRoutes.js';
+import refreshRoutes from './src/routes/refreshRoutes.js';
 
 const app = express();
 app.use(express.json());
@@ -20,9 +21,9 @@ app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
 
 // ---- Routes ----
-app.use('/auth/login', authRoutes);
-app.use('/auth/callback', authRoutes);
-app.use('/user/genre', userRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/user', userRoutes);
+app.use('/api/refresh', refreshRoutes);
 
 // database
 
@@ -54,3 +55,10 @@ mongoose.connect(process.env.CONNECTION_URL, {useNewUrlParser: true, useUnifiedT
     .then(() => app.listen(PORT, () => console.log(`Server running on port: ${PORT}`)))
     .catch((error) => console.log(error.message));
 */
+
+const PORT = process.env.PORT || 3001;
+const HOST = "127.0.0.1";
+
+app.listen(PORT, HOST, () => {
+  console.log(`Server running at http://${HOST}:${PORT}`);
+});
