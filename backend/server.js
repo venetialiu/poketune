@@ -7,8 +7,8 @@ import cookieParser from 'cookie-parser';
 
 // import routes
 import authRoutes from './src/routes/authRoutes.js';
-import userRoutes from './src/routes/userRoutes.js';
-import refreshRoutes from './src/routes/refreshRoutes.js';
+import meRoutes from './src/routes/meRoutes.js';
+import auth from "./src/middleware/auth.js";
 
 const app = express();
 app.use(express.json());
@@ -24,8 +24,7 @@ app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 
 // ---- Routes ----
 app.use('/api/auth', authRoutes);
-app.use('/api/user', userRoutes);
-app.use('/api/refresh', refreshRoutes);
+app.use('/api/me', auth, meRoutes);
 
 // database
 

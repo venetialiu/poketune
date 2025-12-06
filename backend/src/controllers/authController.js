@@ -1,5 +1,6 @@
 import querystring from 'querystring';
 import crypto from 'crypto';
+import { sessions } from "../store/sessionStore.js";
 
 const stateKey = 'spotify_auth_state';
 
@@ -79,6 +80,19 @@ export const callBack = async(req, res) => {
             refresh_token: refresh_token,
             expires_in: expires_in,
         });
+
+        // get or create sessionId --> replace with JWT token potentially
+        const sessionId = crypto.randomBytes(16).toString("hex");
+
+        // store tokens in db (for now stored in local store/sessionStore.js)
+        sessions[sessionId] = {
+            access_token: access_token,
+            refresh_token: refresh_token,
+            expires_at: Date.now() + expires_in*1000, 
+        };
+
+        // store sessionId in cookies
+        res.cookie("session_id", sessionId);
 
         return res.redirect(`${process.env.FRONTEND_URL}/show`);
 
