@@ -29,20 +29,62 @@ export const logIn = (req, res) => {
 
 
 export const callBack = async(req, res) => {
+    const code = req.query.code || null;
+    const state = req.query.state || null;
+    const userUrl = process.env.USER_REDIRECT_URI;
+
     // if code is not valid or has error --> respond with 400
-    
+    if ((code === null) || (state !== req.cookies?.[stateKey])) {
+        console.log("Login failed.")
+        res.clearCookie(stateKey);
+        return res.redirect(`${process.env.FRONTEND_URL}/auth?error=state_code`);
+       
+    }
 
-    // login success
+    // clear stateKey from cookie
+    res.clearCookie(stateKey);
+    
+    // ----- login success -----
     // get access token:
+    try {
 
-    // build req body
+        // build req body
+        const body = new URLSearchParams({
+            code,
+            redirect_uri: process.env.SPOTIFY_REDIRECT_URI,
+            grant_type: "authorization_code",
+        });
 
-    // post body to TOKEN_URL 
-    
-    // extract access token, refresh token, expires in from res
+        // post body to TOKEN_URL 
+        const tokenResponse = await fetch(process.env.TOKEN_URL, {
+            method: "POST",
+            headers: {
+                Authorization: "Basic " + Buffer.from(
+                process.env.SPOTIFY_CLIENT_ID + ":" + process.env.SPOTIFY_CLIENT_SECRET
+                ).toString("base64"),
+                "content-type": "application/x-www-form-urlencoded",
+            },
+            body,
+        })
+        
+        // extract access token, refresh token, expires in from res
+        const tokenData = await tokenResponse.json();
+        const access_token = tokenData.access_token;
+        const refresh_token = tokenData.refresh_token;
+        const expires_in = tokenData.expires_in;
 
-    // store the data
+        // return redirect call user/genre ?
+        const params = querystring.stringify({
+            access_token: access_token,
+            refresh_token: refresh_token,
+            expires_in: expires_in,
+        });
 
-    // return redirect call user/genre ?
+        return res.redirect(`${process.env.FRONTEND_URL}/show`);
 
+    } catch(err) {
+        console.error("Token fetch error:", err)
+        return res.redirect(`${process.env.FRONTEND_URL}/auth?error=token`);
+    }
 }
+

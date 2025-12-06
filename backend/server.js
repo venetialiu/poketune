@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from "mongoose";
+import cookieParser from 'cookie-parser';
 
 // import routes
 import authRoutes from './src/routes/authRoutes.js';
@@ -11,14 +12,15 @@ import refreshRoutes from './src/routes/refreshRoutes.js';
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 dotenv.config();
+app.use(cookieParser());
 
 // JWT body parsing
 app.use(bodyParser.json({limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 
-app.use(cors());
 
 // ---- Routes ----
 app.use('/api/auth', authRoutes);
