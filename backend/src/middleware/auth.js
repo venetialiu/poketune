@@ -1,28 +1,31 @@
-import { sessions } from "../store/sessionStore.js";
+import sessions from "../store/sessionStore.js";
 
-/*
-Example shape of req for reference:
-
-
-
-*/
-
+/* 
+Checks:
+1. if sessionId exists
+2. if token has expired -> if expire -> refresh token
+*/ 
 
 const auth = async (req, res, next) => {
+    
+    try{
+        const sessionId = req.cookies.session_id;
+        const session = sessions[sessionId]
 
-    const sessionId = req.cookies.session_id;
-    const session = sessions[sessionId]
+        if (!sessionId || !sessions[sessionId]) {
+            return res.status(401).json({ ok: false, error: "not logged in" });
+        }
 
-    if (!sessionId || !sessions[sessionId]) {
-        return res.status(401).json({ error: "not logged in" });
-    }
+        if (Date.now() > session.expires_at) {
+            try {
+                await refreshTokens(session);
+            } catch (error) {
+                return res.status(401).json({ ok: false, error: "token refresh failed" });
+            }
+        }
 
-    if (Date.now() > session.expires_at) {
-        await refreshTokens(session);
-    }
-
-
-    try {
+        // attach session to req for controller
+        req.session = session;
 
         // pass it down to next
         return next();

@@ -1,6 +1,6 @@
 import querystring from 'querystring';
 import crypto from 'crypto';
-import { sessions } from "../store/sessionStore.js";
+import sessions from "../store/sessionStore.js";
 
 const stateKey = 'spotify_auth_state';
 
