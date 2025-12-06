@@ -12,5 +12,9 @@
   align-items: center;
 
   z-index: 999;
+
+  align-items: center; 
+  box-sizing: border-box;  
+
 }
 
