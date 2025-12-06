@@ -6,11 +6,13 @@ import './App.css'
 import About from './components/About/About'
 import Auth from './components/Auth/Auth'
 import Show from './components/Show/Show'
+import Navbar from './components/Navbar/Navbar'
 
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [showAbout, setShowAbout] = useState(false);
 
   // TBD:
   // Rehydrate user from localStorage so Google login persists across reloads
@@ -20,6 +22,7 @@ function App() {
   return (
     <>
       <UserContext.Provider value={{ currentUser, setCurrentUser, isLoading }}>
+        <Navbar onShowAbout={() => setShowAbout(true)}/>
         <Router>
           <Routes>
             {/* auth (login) is the first page users land on */}
@@ -27,8 +30,9 @@ function App() {
             <Route path="/auth" element={<Auth/>} />
             <Route path="/about" element={<About />} />
             <Route path="/show" element={<Show />} />
-            {/* to add: unique meeting page routes to ID */}
           </Routes>
+          {/* About Popup Modal */}
+          {showAbout && <About onClose={() => setShowAbout(false)} />}
         </Router>
       </UserContext.Provider>
     </>

@@ -11,7 +11,7 @@ const Auth = () => {
 
     return(
         <>
-            <h2>Hi! Please Login to Spotify to Find out what your pokemon is.</h2>
+            <h2>Hi! Please login to Spotify to find out what your pokemon is.</h2>
             <button onClick={handleClick}>Log In</button>
         </>
     )
