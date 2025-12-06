@@ -35,6 +35,7 @@ const Show = () => {
     return(
         <div>
             <h1>Your Pokemon</h1>
+            {/*Replace later*/}
             <pre>{JSON.stringify(userData, null, 2)}</pre>
         </div>
         
