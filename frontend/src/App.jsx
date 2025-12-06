@@ -22,8 +22,8 @@ function App() {
   return (
     <>
       <UserContext.Provider value={{ currentUser, setCurrentUser, isLoading }}>
-        <Navbar onShowAbout={() => setShowAbout(true)}/>
         <Router>
+          <Navbar onShowAbout={() => setShowAbout(true)}/>
           <Routes>
             {/* auth (login) is the first page users land on */}
             <Route path="/" element={<div className="App"><Auth /></div>} />

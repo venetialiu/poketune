@@ -13,30 +13,12 @@ const Auth = () => {
         
         // redirects user to backend /auth/login route
         try {
-            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/auth/login`, {
-                method: 'POST',
-                headers: { "Content-Type": "application/json" },
-            })
-            
-            const data = await res.json();
-
-            if (! data.ok) {
-                console.error("Login failed: ", data.error);
-            }
-
-            const { user, token } = data;
-
-            setCurrentUser(user);
-            
-            localStorage.setItem('currentUser', JSON.stringify(user));
-            localStorage.setItem("authToken", token);
-
+            window.location.href = `${import.meta.env.VITE_BACKEND_URL}/api/auth/login`;
+            // navigate('/show');
 
         } catch(err){
             console.error("Login error: ", err);
         }
-
-        navigate('/show')
 
     }
 

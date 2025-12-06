@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import './Navbar.css'
 
 const Navbar = ({ onShowAbout }) => {
-
+    const navigate = useNavigate();
+    
     return(
         <div className="navbar">
-            <h2>PokeTune</h2>
+            <button onClick={() => navigate('/show') }>PokeTune</button>
             <button className="about" onClick={onShowAbout}>About</button>
         </div>
         
