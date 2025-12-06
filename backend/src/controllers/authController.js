@@ -1,28 +1,32 @@
-// what this for??
-var stateKey = 'spotify_auth_state';
+import querystring from 'querystring';
+import crypto from 'crypto';
 
-// redirect to the auth url (links to Spotify's page)
-export const logIn = async(req, res) => {
+const stateKey = 'spotify_auth_state';
 
-    // get auth Url from .env
-    const authUrl = process.env.AUTH_URL;
-    const client_id = provess.env.SPOTIFY_CLIENT_ID;
-    const redirect_uri = process.env.SPOTIFY_REDIRECT_URI;
-
-    var state = generateRandomString(16);
-    res.cookie(stateKey, state);
-
-    // your application requests authorization
-    res.redirect(authUrl +
-        querystring.stringify({
-        response_type: 'code',
-        client_id: client_id,
-        scope: scope,
-        redirect_uri: redirect_uri,
-        state: state
-        }));
-
+function generateRandomString(length) {
+  return crypto.randomBytes(20).toString('hex').slice(0, length);
 }
+
+export const logIn = (req, res) => {
+  const authUrl = process.env.AUTH_URL;
+  const client_id = process.env.SPOTIFY_CLIENT_ID;
+  const redirect_uri = process.env.SPOTIFY_REDIRECT_URI;
+  const scope = 'user-read-email user-top-read';
+
+  const state = generateRandomString(16);
+  res.cookie(stateKey, state);
+
+  const params = querystring.stringify({
+    response_type: 'code',
+    client_id: client_id,
+    scope: scope,
+    redirect_uri: redirect_uri,
+    state: state,
+  });
+
+  res.redirect(`${authUrl}${params}`);
+};
+
 
 export const callBack = async(req, res) => {
     // if code is not valid or has error --> respond with 400

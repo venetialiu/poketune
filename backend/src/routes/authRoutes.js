@@ -6,7 +6,7 @@ const router = Router();
 // call controller to redirect ot the auth url
 // add middleware later on
 
-router.post("/login", logIn);
-router.post("/callback", callBack);
+router.get("/login", logIn);
+router.get("/callback", callBack);
 
 export default router;
