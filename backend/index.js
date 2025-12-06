@@ -20,8 +20,9 @@ app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
 
 // ---- Routes ----
-app.use('/posts', postRoutes);
-app.use('/users', userRoutes);
+app.use('/auth/login', authRoutes);
+app.use('/auth/callback', authRoutes);
+app.use('/user/genre', userRoutes);
 
 // database
 
