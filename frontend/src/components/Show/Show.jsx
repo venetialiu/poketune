@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const Show = () => {
     // shape of userdata TBD
     const [userData, setUserData] = useState([]);
     const [userGenres, setUserGenres] = useState([]);
+    const navigate = useNavigate();
 
     // fetch user data on mount
     useEffect(() => {
@@ -34,11 +36,16 @@ const Show = () => {
         
     }, [])
 
+    const handleClick = () => {
+        navigate('/pokemon');
+    }
+
     return(
         <div>
-            <h1>Your Pokemon</h1>
+            <h1>Music Genres (Open)</h1>
             {/*Replace later*/}
             <pre>{JSON.stringify(userGenres, null, 2)}</pre>
+            <button onClick={handleClick}>Open Poke Ball</button>
         </div>
         
     )

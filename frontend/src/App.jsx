@@ -7,6 +7,7 @@ import About from './components/About/About'
 import Auth from './components/Auth/Auth'
 import Show from './components/Show/Show'
 import Navbar from './components/Navbar/Navbar'
+import Pokemon from './components/Pokemon/Pokemon'
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
             <Route path="/auth" element={<Auth/>} />
             <Route path="/about" element={<About />} />
             <Route path="/show" element={<Show />} />
+            <Route path="/pokemon" element={<Pokemon />} />
           </Routes>
           {/* About Popup Modal */}
           {showAbout && <About onClose={() => setShowAbout(false)} />}

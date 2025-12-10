@@ -9,6 +9,7 @@ import cookieParser from 'cookie-parser';
 // import routes
 import authRoutes from './src/routes/authRoutes.js';
 import meRoutes from './src/routes/meRoutes.js';
+import pokemonRoutes from './src/routes/pokemonRoutes.js';
 import auth from "./src/middleware/auth.js";
 
 const app = express();
@@ -29,6 +30,7 @@ app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 // ---- Routes ----
 app.use('/api/auth', authRoutes);
 app.use('/api/me', auth, meRoutes);
+app.use('/api/pokemon', auth, pokemonRoutes);
 
 // database
 

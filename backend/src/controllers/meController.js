@@ -1,4 +1,4 @@
-
+import sessions from "../store/sessionStore.js";
 
 export const getMeGenres = async(req, res) => {
     /*
@@ -32,6 +32,10 @@ export const getMeGenres = async(req, res) => {
         const artistGenres = artistsData.items.flatMap(artist => artist.genres);
 
         console.log("Genre fetch success: ", artistGenres);
+
+        const sessionId = req.cookies.session_id;
+        const session = sessions[sessionId]
+        session.genres = artistGenres
         
         return res.status(200).json({ok:true, genres: artistGenres});
 
