@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from "body-parser";
 import cors from 'cors';
 import dotenv from 'dotenv';
+dotenv.config();
 import mongoose from "mongoose";
 import cookieParser from 'cookie-parser';
 
@@ -11,10 +12,13 @@ import meRoutes from './src/routes/meRoutes.js';
 import auth from "./src/middleware/auth.js";
 
 const app = express();
+
+app.use(cors({
+  origin: process.env.FRONTEND_URL,
+  credentials: true,
+}));
 app.use(express.json());
-app.use(cors());
 app.use(express.urlencoded({ extended: true }));
-dotenv.config();
 app.use(cookieParser());
 
 // JWT body parsing

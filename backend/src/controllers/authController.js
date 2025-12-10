@@ -12,7 +12,7 @@ export const logIn = (req, res) => {
   const authUrl = process.env.AUTH_URL;
   const client_id = process.env.SPOTIFY_CLIENT_ID;
   const redirect_uri = process.env.SPOTIFY_REDIRECT_URI;
-  const scope = 'user-read-email user-top-read';
+  const scope = 'user-read-email user-read-private user-top-read';
 
   const state = generateRandomString(16);
   res.cookie(stateKey, state);

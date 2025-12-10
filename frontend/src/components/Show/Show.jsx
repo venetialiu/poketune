@@ -2,14 +2,15 @@ import { useState, useEffect } from 'react';
 
 const Show = () => {
     // shape of userdata TBD
-    const [userData, setUserData] = useState();
+    const [userData, setUserData] = useState([]);
+    const [userGenres, setUserGenres] = useState([]);
 
     // fetch user data on mount
     useEffect(() => {
 
         const fetchUserData = async () => {
             try {
-                const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/me`, {
+                const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/me/genres`, {
                     method: 'GET',
                     // send cookies to backend
                     credentials: "include", 
@@ -19,7 +20,8 @@ const Show = () => {
 
                 if (data.ok) {
                     // shape of userdata TBD
-                    setUserData(data);
+                    // setUserData(data);
+                    setUserGenres(data.genres)
                     console.log("User data successfully fetched.")
                 }
 
@@ -36,7 +38,7 @@ const Show = () => {
         <div>
             <h1>Your Pokemon</h1>
             {/*Replace later*/}
-            <pre>{JSON.stringify(userData, null, 2)}</pre>
+            <pre>{JSON.stringify(userGenres, null, 2)}</pre>
         </div>
         
     )
