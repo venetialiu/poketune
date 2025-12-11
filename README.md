@@ -3,7 +3,7 @@
 Find your Pokémon based on your Spotify listening habits.
 
 ## Link to Live Website
-[poketune](poketune-five.vercel.app)
+[poketune](https://poketune-five.vercel.app/)
 
 ## Features
 - Spotify login
