@@ -2,7 +2,7 @@
 
 Find your Pokémon based on your Spotify listening habits.
 
-## Link to Live Website
+## Link to Live Demo
 [poketune](https://poketune-five.vercel.app/)
 
 ## Features
