@@ -1,0 +1,236 @@
+
+.page-title {
+    font-size: 40px;
+    margin-bottom: 30px;
+    font-weight: 700;
+    color: #333;
+}
+
+/* Header layout */
+.pokemon-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Pokemon name */
+.pokemon-name {
+    font-size: 24px;
+    margin: 0;
+    font-weight: 700;
+    text-align: center;
+    align-items: center;
+}
+
+/* Type badge */
+.pokemon-type {
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    text-transform: capitalize;
+    color: white;
+    font-weight: 600;
+}
+
+
+/* Type colors */
+.type-fairy    { background-color: #EE99AC; }
+.type-rock     { background-color: #B6A136; }
+.type-steel    { background-color: #B7B7CE; }
+.type-grass    { background-color: #7AC74C; }
+.type-electric { background-color: #F7D02C; }
+.type-psychic  { background-color: #F95587; }
+.type-dark     { background-color: #705746; }
+.type-water    { background-color: #6390F0; }
+.type-normal   { background-color: #A8A77A; }
+.type-fire     { background-color: #EE8130; }
+
+
+/* Image styling */
+.pokemon-image-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.pokemon-img {
+    width: 180px;
+    height: auto;
+    image-rendering: pixelated; /* makes sprites crisp */
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+/* Hover lift */
+.pokemon-img:hover {
+    transform: translateY(-6px);
+}
+
+
+/* TCG CARD BASE */
+.tcg-card {
+    width: 340px;
+    background: linear-gradient(135deg, #faf6e8, #fffef9);
+    border-radius: 18px;
+    border: 6px solid #f1d56c; /* Pokémon card yellow */
+    padding: 20px;
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.25),
+        0 0 30px rgba(220, 172, 50, 0.3);
+    font-family: 'Inter', sans-serif;
+    text-transform: capitalize;
+}
+
+/* ====== TYPE-RESPONSIVE CARD THEMES ====== */
+
+/* Fairy */
+.tcg-card-fairy {
+    background: linear-gradient(135deg, #ffe4f0, #fff8fc);
+    border-color: #ee99ac;
+    box-shadow:
+        0 8px 20px rgba(238, 153, 172, 0.4),
+        0 0 30px rgba(238, 153, 172, 0.3);
+}
+
+/* Grass */
+.tcg-card-grass {
+    background: linear-gradient(135deg, #e1f8d5, #f6fff2);
+    border-color: #7ac74c;
+    box-shadow:
+        0 8px 20px rgba(122, 199, 76, 0.3),
+        0 0 30px rgba(122, 199, 76, 0.2);
+}
+
+/* Fire */
+.tcg-card-fire {
+    background: linear-gradient(135deg, #ffe8d9, #fff4ec);
+    border-color: #ee8130;
+    box-shadow:
+        0 8px 20px rgba(238, 129, 48, 0.3),
+        0 0 30px rgba(238, 129, 48, 0.25);
+}
+
+/* Water */
+.tcg-card-water {
+    background: linear-gradient(135deg, #e0f0ff, #f5fbff);
+    border-color: #6390f0;
+    box-shadow:
+        0 8px 20px rgba(99, 144, 240, 0.3),
+        0 0 30px rgba(99, 144, 240, 0.25);
+}
+
+/* Electric */
+.tcg-card-electric {
+    background: linear-gradient(135deg, #fff9d6, #fffef2);
+    border-color: #f7d02c;
+    box-shadow:
+        0 8px 20px rgba(247, 208, 44, 0.35),
+        0 0 30px rgba(247, 208, 44, 0.25);
+}
+
+/* Dark */
+.tcg-card-dark {
+    background: linear-gradient(135deg, #d9d5d1, #efedea);
+    border-color: #705746;
+    box-shadow:
+        0 8px 20px rgba(112, 87, 70, 0.35),
+        0 0 30px rgba(112, 87, 70, 0.25);
+}
+
+/* Psychic */
+.tcg-card-psychic {
+    background: linear-gradient(135deg, #ffe0ea, #fff5fa);
+    border-color: #f95587;
+    box-shadow:
+        0 8px 20px rgba(249, 85, 135, 0.3),
+        0 0 30px rgba(249, 85, 135, 0.25);
+}
+
+/* Rock */
+.tcg-card-rock {
+    background: linear-gradient(135deg, #f0e5c7, #fdf9ed);
+    border-color: #b6a136;
+    box-shadow:
+        0 8px 20px rgba(182,161,54,0.3),
+        0 0 30px rgba(182,161,54,0.2);
+}
+
+/* Steel */
+.tcg-card-steel {
+    background: linear-gradient(135deg, #e5e8ef, #f8f9fb);
+    border-color: #b7b7ce;
+    box-shadow:
+        0 8px 20px rgba(183,183,206,0.3),
+        0 0 30px rgba(183,183,206,0.2);
+}
+
+/* Normal */
+.tcg-card-normal {
+    background: linear-gradient(135deg, #f6f3e9, #fdfcf7);
+    border-color: #a8a77a;
+    box-shadow:
+        0 8px 20px rgba(168,167,122,0.3),
+        0 0 30px rgba(168,167,122,0.2);
+}
+
+
+/* HEADER LIKE "Grookey On The Ball" */
+.tcg-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tcg-name {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.tcg-hp {
+    font-size: 22px;
+    font-weight: 700;
+    color: #d63c2d;
+}
+
+/* SPRITE AREA */
+.tcg-image-wrapper {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+
+.tcg-sprite {
+    width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    image-rendering: pixelated;
+}
+
+/* STATS LIKE TCG ATTACK TEXT */
+.tcg-info {
+    margin-top: 10px;
+}
+
+.tcg-stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    font-size: 16px;
+}
+
+/* TYPE BADGE */
+.tcg-type-badge {
+    margin-top: 16px;
+    padding: 8px 12px;
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    width: fit-content;
+}

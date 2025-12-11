@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import './Show.css'
+
 
 const Show = () => {
     // shape of userdata TBD
@@ -42,10 +44,13 @@ const Show = () => {
 
     return(
         <div>
-            <h1>Music Genres (Open)</h1>
-            {/*Replace later*/}
-            <pre>{JSON.stringify(userGenres, null, 2)}</pre>
-            <button onClick={handleClick}>Open Poke Ball</button>
+            <h1>Open Your Pokeball!</h1>
+            <button 
+                onClick={handleClick}
+                className="pokeball-btn"
+            >
+                <img src='./pokeball.svg' alt="pokeball" className="pokeball-img"/>
+            </button>
         </div>
         
     )

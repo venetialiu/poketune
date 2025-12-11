@@ -1,0 +1,34 @@
+.pokeball-btn {
+    display: inline-block;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    cursor: pointer;
+    clip-path: circle(50%);
+}
+
+.pokeball-img {
+    width: 175px;
+    height: auto;
+    transition: transform 0.2s ease;
+}
+
+.pokeball-btn:hover .pokeball-img {
+    transform: scale(1.03);
+}
+
+.pokeball-img:hover {
+     animation: shake 0.6s infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    15% { transform: translate(-2px, 2px) rotate(-4deg); }
+    30% { transform: translate(2px, -2px) rotate(4deg); }
+    45% { transform: translate(-2px, 2px) rotate(-3deg); }
+    60% { transform: translate(2px, -1px) rotate(3deg); }
+    75% { transform: translate(-1px, 1px) rotate(-2deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}

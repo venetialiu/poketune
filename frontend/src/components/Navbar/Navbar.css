@@ -5,7 +5,7 @@
   width: 100%;
 
   background-color: white; 
-  padding: 12px 24px;
+  padding: 0px 40px;
 
   display: flex;
   justify-content: space-between;
@@ -18,3 +18,23 @@
 
 }
 
+
+.about {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    cursor: pointer;
+    font-size: 25px;   
+}
+
+.logo {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  cursor: pointer;
+  font-size: 25px;   
+}

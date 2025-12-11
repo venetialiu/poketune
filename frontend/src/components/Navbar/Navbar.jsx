@@ -7,7 +7,7 @@ const Navbar = ({ onShowAbout }) => {
     
     return(
         <div className="navbar">
-            <button onClick={() => navigate('/show') }>PokeTune</button>
+            <button className="logo" onClick={() => navigate('/show') }>PokeTune</button>
             <button className="about" onClick={onShowAbout}>About</button>
         </div>
         
