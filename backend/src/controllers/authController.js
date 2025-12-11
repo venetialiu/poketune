@@ -92,7 +92,12 @@ export const callBack = async(req, res) => {
         };
 
         // store sessionId in cookies
-        res.cookie("session_id", sessionId);
+        res.cookie("session_id", sessionId, {
+            httpOnly: true,
+            secure: true,
+            // REQUIRED FOR VERCEL → RENDER cross-domain cookies
+            sameSite: "none",   
+        });
 
         return res.redirect(`${process.env.FRONTEND_URL}/show`);
 
